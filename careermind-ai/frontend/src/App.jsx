@@ -19,6 +19,10 @@ import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import AdminDashboard from './pages/AdminDashboard';
 import ResumeBuilder from './pages/ResumeBuilder';
+import Companies from './pages/Companies';
+import ProgressTracker from './pages/ProgressTracker';
+import SkillGapAnalysis from './pages/SkillGapAnalysis';
+import JobMatch from './pages/JobMatch';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -71,6 +75,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/companies" element={<Companies />} />
+          <Route path="/progress" element={<ProtectedRoute><ProgressTracker /></ProtectedRoute>} />
           
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/agent" element={<ProtectedRoute><Agent /></ProtectedRoute>} />
@@ -78,6 +84,8 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/resume" element={<ProtectedRoute><ResumeBuilder /></ProtectedRoute>} />
+          <Route path="/skill-gap" element={<ProtectedRoute><SkillGapAnalysis /></ProtectedRoute>} />
+          <Route path="/job-match" element={<ProtectedRoute><JobMatch /></ProtectedRoute>} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

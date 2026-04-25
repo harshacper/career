@@ -21,8 +21,11 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Courses', path: '/courses' },
-    { name: 'Notes', path: '/notes' },
+    { name: 'Top Companies', path: '/companies' },
+    { name: 'Progress', path: '/progress' },
     { name: 'Interview Prep', path: '/interview' },
+    { name: 'Skill Gap', path: '/skill-gap' },
+    { name: 'Job Match', path: '/job-match' },
     { name: 'Resume Builder', path: '/resume' },
   ];
 

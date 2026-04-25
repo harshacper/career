@@ -4,20 +4,21 @@ import { FileText, Cpu, Database, Network, Layout, Boxes, ShieldAlert } from 'lu
 
 const Notes = () => {
   const categories = [
-    { id: 'dsa', title: 'Data Structures & Algorithms', desc: 'Arrays, Trees, Graphs, DP and more.', icon: Boxes, diff: 'Hard', color: 'text-red-500', bg: 'bg-red-50' },
+    { id: 'dsa', title: 'Data Structures & Algorithms', desc: 'Arrays, Trees, Graphs, DP and more.', icon: Boxes, diff: 'Hard', color: 'text-red-500', bg: 'bg-red-50', pdf: '/notes/dsa-cheatsheet.pdf' },
     { id: 'os', title: 'Operating Systems', desc: 'Process Management, Threads, Deadlocks.', icon: Cpu, diff: 'Medium', color: 'text-orange-500', bg: 'bg-orange-50' },
     { id: 'dbms', title: 'Database Management Systems', desc: 'SQL, Normalization, Transactions.', icon: Database, diff: 'Medium', color: 'text-orange-500', bg: 'bg-orange-50' },
     { id: 'cn', title: 'Computer Networks', desc: 'OSI Model, TCP/IP, Routing.', icon: Network, diff: 'Hard', color: 'text-red-500', bg: 'bg-red-50' },
-    { id: 'web', title: 'Web Development Basics', desc: 'HTML, CSS, JS, React concepts.', icon: Layout, diff: 'Easy', color: 'text-green-500', bg: 'bg-green-50' },
-    { id: 'system', title: 'System Design', desc: 'Scalability, Load Balancing, Microservices.', icon: ShieldAlert, diff: 'Hard', color: 'text-red-500', bg: 'bg-red-50' }
+    { id: 'web', title: 'Web Development Basics', desc: 'HTML, CSS, JS, React concepts.', icon: Layout, diff: 'Easy', color: 'text-green-500', bg: 'bg-green-50', pdf: '/notes/mern-stack.pdf' },
+    { id: 'system', title: 'System Design', desc: 'Scalability, Load Balancing, Microservices.', icon: ShieldAlert, diff: 'Hard', color: 'text-red-500', bg: 'bg-red-50', pdf: '/notes/system-design.pdf' },
+    { id: 'shrm', title: 'SHRM Certification', desc: 'Practical HR skills, CP & SCP exam notes.', icon: FileText, diff: 'Medium', color: 'text-purple-500', bg: 'bg-purple-50', pdf: '/notes/shrm-certification.pdf' }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#14532D] mb-4">Engineering <span className="text-[#16A34A]">Notes</span></h1>
-          <p className="text-lg text-gray-600">To-the-point revision material crafted for last-minute interview prep.</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#14532D] mb-4">Study <span className="text-[#16A34A]">Notes</span></h1>
+          <p className="text-lg text-gray-600">To-the-point revision material crafted for last-minute prep.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -45,9 +46,20 @@ const Notes = () => {
               <h3 className="text-2xl font-bold text-gray-800 mb-2">{cat.title}</h3>
               <p className="text-gray-500 mb-8">{cat.desc}</p>
               
-              <button className="w-full flex items-center justify-center gap-2 py-3 bg-[#F0FDF4] text-[#14532D] font-semibold rounded-xl hover:bg-[#16A34A] hover:text-white transition-colors">
-                <FileText size={18} /> View Notes
-              </button>
+              <a 
+                href={cat.pdf || '#'} 
+                target={cat.pdf ? "_blank" : "_self"}
+                rel="noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-[#F0FDF4] text-[#14532D] font-semibold rounded-xl hover:bg-[#16A34A] hover:text-white transition-colors"
+                onClick={(e) => {
+                  if (!cat.pdf) {
+                    e.preventDefault();
+                    alert('PDF Notes coming soon for this topic!');
+                  }
+                }}
+              >
+                <FileText size={18} /> View PDF
+              </a>
             </motion.div>
           ))}
         </div>
