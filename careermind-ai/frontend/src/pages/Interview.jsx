@@ -53,15 +53,21 @@ const Interview = () => {
             </div>
             <h3 className="text-2xl font-bold text-gray-800 mb-3">Company-wise Questions</h3>
             <p className="text-gray-500 mb-6">Click a company below to view frequently asked technical and behavioral questions.</p>
-            <div className="flex flex-wrap gap-2 mb-6 max-h-[300px] overflow-y-auto custom-scrollbar pr-2">
+            <div className="flex flex-col gap-3 mb-6 max-h-[350px] overflow-y-auto custom-scrollbar pr-2">
               {Object.keys(companyData).map(c => (
-                <button 
+                <div 
                   key={c} 
                   onClick={() => setSelectedCompany(c)}
-                  className="px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-100 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 shadow-sm"
+                  className="p-4 bg-gray-50 border border-gray-100 rounded-xl hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all text-left flex flex-col gap-2 group"
                 >
-                  {c}
-                </button>
+                  <div className="flex justify-between items-center">
+                    <span className="text-base font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{c}</span>
+                    <ChevronRight size={18} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
+                  </div>
+                  <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed group-hover:text-blue-900/70">
+                    {companyData[c].info}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
