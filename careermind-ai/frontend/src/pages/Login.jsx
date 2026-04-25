@@ -19,7 +19,7 @@ const Login = () => {
     setError('');
     try {
       const res = await login(formData.email, formData.password);
-      if (formData.email === 'harsha123') {
+      if (formData.email === 'harsha') {
         navigate('/admin');
       } else {
         navigate('/dashboard');
